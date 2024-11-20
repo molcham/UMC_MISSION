@@ -6,6 +6,8 @@ import {
   setPreference,
 } from "../repositories/user.repository.js";
 
+//5주차 실습 코드 
+
 export const userSignUp = async (data) => {
   const joinUserId = await addUser({
     email: data.email,
