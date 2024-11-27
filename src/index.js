@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import bodyParser from 'body-parser';
 import { handleUserSignUp } from "./controllers/user.controller.js";
+import { handleAddReview } from "./controllers/review.controller.js";                   
 
 dotenv.config();
 
@@ -19,11 +20,20 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.post("/signup", handleUserSignUp);
-
 app.get("/signup",(req,res)=>{
   res.send("회원가입 페이지");
 });
+
+app.get("/missions/:mission_id/review",(req,res)=>{
+  const missionId = req.params.mission_id;
+  res.send(`미션번호 ${missionId} 리뷰남기는 중`);
+  //백틱으로 감싸는거 템플릿 리터럴 !문자열 삽입,줄바꿈 지원 ,표현식 사용
+});
+
+
+
+app.post("/signup", handleUserSignUp);
+app.post('/missions/:mission_id/review',handleAddReview);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

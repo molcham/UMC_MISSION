@@ -19,7 +19,7 @@ export const userSignUp = async (data) => {
     status: data.status,
     inactive_date: data.inactive_date,
     social_type: data.social_type,
-    point:data.point,
+    point:data.point
   });
 
   if (joinUserId === null) {
