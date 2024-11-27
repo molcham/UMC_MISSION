@@ -2,7 +2,8 @@ import { pool } from "../db.config.js";
 
 // User 데이터 삽입
 // User 데이터 삽입
-export const addUser = async (data) => {
+export const addUser = async (data) => {  
+  
   const conn = await pool.getConnection();
 
   try {
