@@ -24,7 +24,7 @@ export const handleUserSignUp = async (req, res, next) => {
       })),     
     };
 
-    res.status(StatusCodes.OK).json({ result: responseUser });
+    res.status(StatusCodes.OK).success(responseUser);
   } catch (err) {
     console.error("회원가입 실패:", err);
     next(err); // 오류가 발생하면 에러 핸들러로 넘기기
