@@ -6,6 +6,10 @@ import {
   setPreference,
 } from "../repositories/user.repository.js";
 
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
 //5주차 실습 코드 
 
 export const userSignUp = async (data) => {

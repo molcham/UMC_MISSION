@@ -20,21 +20,23 @@ export const bodyToUser = (body) => {
 
 
 export const responseFromUser = ({ user, preferences }) => {
-  const userInfo = user[0];
+  const preferFoods = preferences.map((pref) => ({
+    id: pref.id,
+    foodCategoryId: pref.foodCategoryId,
+    categoryName: pref.categoryName,
+  }));
 
   return {
-    id: userInfo.id,
-    email: userInfo.email,
-    name: userInfo.name,
-    gender: userInfo.gender,
-    birth: userInfo.birth,
-    address: userInfo.address,
-    detailAddress: userInfo.detail_address,
-    phoneNumber: userInfo.phone_number,
-    preferences: preferences.map((pref) => ({
-      id: pref.id,
-      foodCategoryId: pref.food_category_id,
-      categoryName: pref.name,
-    })),
+    email: user.email,
+    name: user.name,
+    gender: user.gender,
+    age:user.age,
+    address: user.address,
+    spec_adress:user.spec_address,
+    status:user.status,
+    inactive_date:user.inactive_date,
+    point:user.point,
+    preferCategory: preferFoods,
   };
 };
+
