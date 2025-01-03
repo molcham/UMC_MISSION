@@ -151,4 +151,4 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node
 
 #구글 로그인 관련 정보
-application-oauth.properties
+application-oauth.properties.env
