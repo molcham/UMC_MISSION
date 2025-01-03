@@ -17,7 +17,7 @@ import { prisma } from "./db.config.js";
 dotenv.config();
 
 // BigInt 처리 함수
-function handleBigInt(data) {
+function handleBigint(data) {
   return JSON.parse(
     JSON.stringify(data, (key, value) =>
       typeof value === "bigint" ? value.toString() : value
@@ -29,12 +29,12 @@ function handleBigInt(data) {
 passport.use(googleStrategy);
 //내가 정의한 로그인 방식을 등록하는 코드
 passport.serializeUser((member, done) =>{ 
-  const safeMember = handleBigInt(member);
+  const safeMember = handleBigint(member);
   done(null, safeMember)
 });
 
 passport.deserializeUser((member, done) =>{ 
-  const safeMember = handleBigInt(member);
+  const safeMember = handleBigint(member);
   done(null, safeMember)
 });
 const app = express();
@@ -150,7 +150,7 @@ app.use(passport.session());
 
 passport.authenticate("google", (err, user, info) => {
   if (err) return next(err);
-  if (!user) return res.redirect("/login");
+  if (!user) return res.redirect("/ouath2/login/google");
   req.logIn(user, (err) => {
     if (err) return next(err);
     res.redirect("/");
@@ -193,7 +193,7 @@ app.listen(port, () => {
 
 app.get("/", (req, res) => {
   if (req.isAuthenticated()) {
-    const safeUser = handleBigInt(req.user);
+    const safeUser = handleBigint(req.user);
     res.json(safeUser);
   } else {
     res.redirect("/oauth2/login/google");
